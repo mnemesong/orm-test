@@ -1,0 +1,49 @@
+{
+    "name": "mnemesong/orm-test",
+    "description": "Orm tests collection for standartize query and commands work in different type storages realization in orm",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "mnemesong/collection-generator": "*",
+        "phpstan/phpstan": "*",
+        "phpstan/phpstan-webmozart-assert": "*",
+        "phpstan/extension-installer": "*"
+    },
+    "scripts": {
+        "test:unit": "phpunit test-unit",
+        "lint:src": "phpstan analyse src --level 9",
+        "lint:unit": "phpstan analyse test-unit --level 9",
+        "lint:stubs": "phpstan analyse stubs --level 9",
+        "lint:helpers": "phpstan analyse test-helpers --level 9"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mnemesong\\OrmTest\\": "src/",
+            "Mnemesong\\OrmTestUnitTests\\": "unit-tests/",
+            "Mnemesong\\OrmTestHelpers\\": "helpers/",
+            "Mnemesong\\OrmTestStubs\\": "stubs/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pantagruel74",
+            "email": "tostar74@mail.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "mnemesong/orm-core": "*",
+        "php": ">=7.4",
+        "webmozart/assert": "1.11.*",
+        "mnemesong/spex": "0.7.*",
+        "mnemesong/structure": "0.4.*",
+        "mnemesong/scalarex": "0.2.*",
+        "mnemesong/table-schema": "0.5.*"
+    },
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    }
+}
