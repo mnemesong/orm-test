@@ -5,7 +5,7 @@ namespace Mnemesong\OrmTest\checker\politics;
 use Mnemesong\Fit\conditions\abstracts\CondInterface;
 use Mnemesong\Fit\conditions\FieldWithFieldCond;
 use Mnemesong\OrmTest\checker\StructureMatchPoliticInterface;
-use Mnemesong\OrmTestUnit\exceptions\UnknownOperatorException;
+use Mnemesong\OrmTest\exceptions\UnknownOperatorException;
 use Mnemesong\Structure\Structure;
 use Webmozart\Assert\Assert;
 

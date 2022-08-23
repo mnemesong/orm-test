@@ -1,6 +1,6 @@
 <?php
 
-namespace Mnemesong\OrmTestUnit\exceptions;
+namespace Mnemesong\OrmTest\exceptions;
 
 class UnknownOperatorException extends \RuntimeException
 {
