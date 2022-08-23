@@ -3,7 +3,7 @@
     "description": "Orm tests collection for standartize query and commands work in different type storages realization in orm",
     "type": "library",
     "require-dev": {
-        "phpunit/phpunit": "*",
+        "phpunit/phpunit": "9.5.20.*",
         "mnemesong/collection-generator": "*",
         "phpstan/phpstan": "*",
         "phpstan/phpstan-webmozart-assert": "*",
@@ -20,7 +20,7 @@
     "autoload": {
         "psr-4": {
             "Mnemesong\\OrmTest\\": "src/",
-            "Mnemesong\\OrmTestUnitTests\\": "unit-tests/",
+            "Mnemesong\\OrmTestUnit\\": "test-unit/",
             "Mnemesong\\OrmTestHelpers\\": "helpers/",
             "Mnemesong\\OrmTestStubs\\": "stubs/"
         }
@@ -33,10 +33,10 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "mnemesong/orm-core": "*",
+        "mnemesong/orm-core": "0.7.*",
         "php": ">=7.4",
         "webmozart/assert": "1.11.*",
-        "mnemesong/spex": "0.7.*",
+        "mnemesong/fit": "0.1.*",
         "mnemesong/structure": "0.4.*",
         "mnemesong/scalarex": "0.2.*",
         "mnemesong/table-schema": "0.5.*"

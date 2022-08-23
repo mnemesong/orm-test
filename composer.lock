@@ -4,26 +4,78 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b93ebc0123f18cc0edb3536d00cf89f",
+    "content-hash": "6413747914624ccd9f600198fe398e95",
     "packages": [
         {
-            "name": "mnemesong/orm-core",
-            "version": "0.4",
+            "name": "mnemesong/fit",
+            "version": "0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mnemesong/orm-core.git",
-                "reference": "29699e5ba34cec7109409550d4fc8470e44e167f"
+                "url": "https://github.com/mnemesong/fit.git",
+                "reference": "5871477b3c34457f429e40a8097136d6b46a4da0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mnemesong/orm-core/zipball/29699e5ba34cec7109409550d4fc8470e44e167f",
-                "reference": "29699e5ba34cec7109409550d4fc8470e44e167f",
+                "url": "https://api.github.com/repos/mnemesong/fit/zipball/5871477b3c34457f429e40a8097136d6b46a4da0",
+                "reference": "5871477b3c34457f429e40a8097136d6b46a4da0",
                 "shasum": ""
             },
             "require": {
-                "mnemesong/scalarex": "0.2.*",
-                "mnemesong/spex": "0.7.*",
                 "mnemesong/structure": "0.4.*",
+                "php": ">=7.4",
+                "webmozart/assert": "1.11.*"
+            },
+            "require-dev": {
+                "phpstan/extension-installer": "*",
+                "phpstan/phpstan": "*",
+                "phpstan/phpstan-webmozart-assert": "*",
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mnemesong\\Fit\\": "src/",
+                    "Mnemesong\\FitStubs\\": "stubs/",
+                    "Mnemesong\\FitTestUnit\\": "test-unit/",
+                    "Mnemesong\\FitTestHelpers\\": "test-helpers/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pantagruel74",
+                    "email": "tostar74@mail.ru"
+                }
+            ],
+            "description": "The package provides objects and an interface for build match conditions.",
+            "support": {
+                "issues": "https://github.com/mnemesong/fit/issues",
+                "source": "https://github.com/mnemesong/fit/tree/0.1"
+            },
+            "time": "2022-08-22T15:33:29+00:00"
+        },
+        {
+            "name": "mnemesong/orm-core",
+            "version": "0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mnemesong/orm-core.git",
+                "reference": "d9f4f2e192ed0a0351846bf16959915d3a917913"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mnemesong/orm-core/zipball/d9f4f2e192ed0a0351846bf16959915d3a917913",
+                "reference": "d9f4f2e192ed0a0351846bf16959915d3a917913",
+                "shasum": ""
+            },
+            "require": {
+                "mnemesong/fit": "0.1.*",
+                "mnemesong/scalarex": "0.2.*",
+                "mnemesong/structure": "0.4.*",
+                "mnemesong/table-schema": "0.5.*",
                 "php": ">=7.4",
                 "webmozart/assert": "1.11.*"
             },
@@ -32,7 +84,7 @@
                 "phpstan/extension-installer": "*",
                 "phpstan/phpstan": "*",
                 "phpstan/phpstan-webmozart-assert": "*",
-                "phpunit/phpunit": "*"
+                "phpunit/phpunit": "9.5.20.*"
             },
             "type": "library",
             "autoload": {
@@ -56,9 +108,9 @@
             "description": "Orm core. Contains storages, commands and queries base logic and interfaces.",
             "support": {
                 "issues": "https://github.com/mnemesong/orm-core/issues",
-                "source": "https://github.com/mnemesong/orm-core/tree/0.4"
+                "source": "https://github.com/mnemesong/orm-core/tree/0.7"
             },
-            "time": "2022-08-18T21:50:25+00:00"
+            "time": "2022-08-22T16:17:58+00:00"
         },
         {
             "name": "mnemesong/scalarex",
@@ -106,56 +158,6 @@
                 "source": "https://github.com/mnemesong/scalarex/tree/0.2"
             },
             "time": "2022-08-18T21:21:41+00:00"
-        },
-        {
-            "name": "mnemesong/spex",
-            "version": "0.7.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mnemesong/spex.git",
-                "reference": "bf9e34a5c604081805ecd9fc41b7954b1b36f7eb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mnemesong/spex/zipball/bf9e34a5c604081805ecd9fc41b7954b1b36f7eb",
-                "reference": "bf9e34a5c604081805ecd9fc41b7954b1b36f7eb",
-                "shasum": ""
-            },
-            "require": {
-                "mnemesong/structure": "0.4.*",
-                "php": ">=7.4",
-                "webmozart/assert": "1.11.*"
-            },
-            "require-dev": {
-                "phpstan/extension-installer": "*",
-                "phpstan/phpstan": "*",
-                "phpstan/phpstan-webmozart-assert": "*",
-                "phpunit/phpunit": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Mnemesong\\Spex\\": "src/",
-                    "Mnemesong\\SpexStubs\\": "stubs",
-                    "Mnemesong\\SpexUnitTest\\": "test-unit"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pantagruel74",
-                    "email": "tostar74@mail.ru"
-                }
-            ],
-            "description": "The package provides objects and an interface for express specifications.",
-            "support": {
-                "issues": "https://github.com/mnemesong/spex/issues",
-                "source": "https://github.com/mnemesong/spex/tree/0.7.2"
-            },
-            "time": "2022-08-17T14:51:44+00:00"
         },
         {
             "name": "mnemesong/structure",
@@ -1366,16 +1368,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.22",
+            "version": "9.5.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e329ac6e8744f461518272612a479fde958752fe"
+                "reference": "12bc8879fb65aef2138b26fc633cb1e3620cffba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e329ac6e8744f461518272612a479fde958752fe",
-                "reference": "e329ac6e8744f461518272612a479fde958752fe",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/12bc8879fb65aef2138b26fc633cb1e3620cffba",
+                "reference": "12bc8879fb65aef2138b26fc633cb1e3620cffba",
                 "shasum": ""
             },
             "require": {
@@ -1409,6 +1411,7 @@
                 "sebastian/version": "^3.0.2"
             },
             "require-dev": {
+                "ext-pdo": "*",
                 "phpspec/prophecy-phpunit": "^2.0.1"
             },
             "suggest": {
@@ -1452,7 +1455,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.22"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.20"
             },
             "funding": [
                 {
@@ -1464,7 +1467,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-08-20T08:25:46+00:00"
+            "time": "2022-04-01T12:37:26+00:00"
         },
         {
             "name": "sebastian/cli-parser",
