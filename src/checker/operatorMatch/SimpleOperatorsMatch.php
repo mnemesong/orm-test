@@ -1,6 +1,6 @@
 <?php
 
-namespace Mnemesong\OrmTest\checker;
+namespace Mnemesong\OrmTest\checker\operatorMatch;
 
 use Webmozart\Assert\Assert;
 

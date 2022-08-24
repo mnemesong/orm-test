@@ -4,7 +4,7 @@ namespace Mnemesong\OrmTest\checker\politics;
 
 use Mnemesong\Fit\conditions\abstracts\CondInterface;
 use Mnemesong\Fit\conditions\FieldWithValCond;
-use Mnemesong\OrmTest\checker\SimpleOperatorsMatch;
+use Mnemesong\OrmTest\checker\operatorMatch\SimpleOperatorsMatch;
 use Mnemesong\OrmTest\checker\StructureMatchPoliticInterface;
 use Mnemesong\OrmTest\exceptions\UnknownOperatorException;
 use Mnemesong\Structure\Structure;
