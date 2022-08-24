@@ -5,6 +5,7 @@ namespace Mnemesong\OrmTestUnit\checker;
 use Mnemesong\Fit\conditions\FieldWithFieldCond;
 use Mnemesong\Fit\Fit;
 use Mnemesong\OrmTest\checker\politics\FieldWithFieldCondPolitic;
+use Mnemesong\OrmTest\checker\politics\FieldWithValueCondPolitic;
 use Mnemesong\OrmTest\checker\StructuresCheckerTool;
 use Mnemesong\OrmTest\exceptions\NotRegistredPoliticException;
 use Mnemesong\OrmTest\exceptions\UnknownOperatorException;
@@ -42,6 +43,20 @@ class StructureCheckerTest extends TestCase
 
     /**
      * @return void
+     * @throws NotRegistredPoliticException
+     */
+    public function testFieldsWithValueCheck(): void
+    {
+        $checker = (new StructuresCheckerTool())->withAddMatchPolitics([new FieldWithValueCondPolitic()]);
+
+        $struct = new Structure(['f1' => 'Mary']);
+        $cond = Fit::field('f1')->val('=', 'mary');
+        $this->assertEquals(true, $checker->matchStructure($struct, $cond->asCaseInsensitive()));
+        $this->assertEquals(false, $checker->matchStructure($struct, $cond->asCaseSensitive()));
+    }
+
+    /**
+     * @return void
      */
     public function testUnknownPolitics(): void
     {
@@ -50,5 +65,27 @@ class StructureCheckerTest extends TestCase
         $cond = Fit::field('f1')->val('=', 'mary');
         $this->expectException(NotRegistredPoliticException::class);
         $checker->matchStructure($struct, $cond);
+    }
+
+    /**
+     * @return void
+     * @throws NotRegistredPoliticException
+     */
+    public function testPoliticDefinitionCheck(): void
+    {
+        $checker = (new StructuresCheckerTool())->withAddMatchPolitics([
+            new FieldWithValueCondPolitic(),
+            new FieldWithFieldCondPolitic(),
+        ]);
+
+        $struct = new Structure(['f1' => 'Mary', 'f2' => 'mary']);
+
+        $cond = Fit::field('f1')->field('=', 'f2');
+        $this->assertEquals(true, $checker->matchStructure($struct, $cond->asCaseInsensitive()));
+        $this->assertEquals(false, $checker->matchStructure($struct, $cond->asCaseSensitive()));
+
+        $cond = Fit::field('f1')->val('=', 'mary');
+        $this->assertEquals(true, $checker->matchStructure($struct, $cond->asCaseInsensitive()));
+        $this->assertEquals(false, $checker->matchStructure($struct, $cond->asCaseSensitive()));
     }
 }
