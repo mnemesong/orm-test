@@ -9,6 +9,10 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetAllMultifieldSo
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetAllSpecialFieldsCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetAllUuidSortedAscCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetAllUuidSortedDescCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetCondEqNullValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetCondEqValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetCondNotEqEmptyValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetCondNotEqValueCase;
 
 class RecordSearchCasesFacade
 {
@@ -24,6 +28,10 @@ class RecordSearchCasesFacade
             new GetAllMultifieldSortedCase1(),
             new GetAllMultifieldSortedCase2(),
             new GetAllSpecialFieldsCase(),
+            new GetCondEqValueCase(),
+            new GetCondNotEqValueCase(),
+            new GetCondEqNullValueCase(),
+            new GetCondNotEqEmptyValueCase(),
         ];
     }
 }
