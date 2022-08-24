@@ -4,10 +4,10 @@ namespace Mnemesong\OrmTestUnit\checker;
 
 use Mnemesong\Fit\conditions\FieldWithFieldCond;
 use Mnemesong\Fit\Fit;
-use Mnemesong\OrmTest\checker\politics\FieldUnaryCondPolitic;
-use Mnemesong\OrmTest\checker\politics\FieldWithArrayCondPolitic;
-use Mnemesong\OrmTest\checker\politics\FieldWithFieldCondPolitic;
-use Mnemesong\OrmTest\checker\politics\FieldWithValueCondPolitic;
+use Mnemesong\OrmTest\checker\structureMatchPolitics\FieldUnaryCondPolitic;
+use Mnemesong\OrmTest\checker\structureMatchPolitics\FieldWithArrayCondPolitic;
+use Mnemesong\OrmTest\checker\structureMatchPolitics\FieldWithFieldCondPolitic;
+use Mnemesong\OrmTest\checker\structureMatchPolitics\FieldWithValueCondPolitic;
 use Mnemesong\OrmTest\checker\StructuresCheckerTool;
 use Mnemesong\OrmTest\exceptions\NotRegistredPoliticException;
 use Mnemesong\OrmTest\exceptions\UnknownOperatorException;
@@ -24,7 +24,7 @@ class StructureCheckerTest extends TestCase
         $checker1 = new StructuresCheckerTool();
         $this->assertEquals([], $checker1->getPoliticsArr());
 
-        $checker2 = $checker1->withAddMatchPolitics([new FieldWithFieldCondPolitic()]);
+        $checker2 = $checker1->withAddStructMatchPolitics([new FieldWithFieldCondPolitic()]);
         $this->assertEquals([], $checker1->getPoliticsArr());
         $this->assertEquals([new FieldWithFieldCondPolitic()], $checker2->getPoliticsArr());
     }
@@ -35,7 +35,7 @@ class StructureCheckerTest extends TestCase
      */
     public function testFieldsWithFieldsCheck(): void
     {
-        $checker = (new StructuresCheckerTool())->withAddMatchPolitics([new FieldWithFieldCondPolitic()]);
+        $checker = (new StructuresCheckerTool())->withAddStructMatchPolitics([new FieldWithFieldCondPolitic()]);
 
         $struct = new Structure(['f1' => 'Mary', 'f2' => 'mary']);
         $cond = Fit::field('f1')->field('=', 'f2');
@@ -49,7 +49,7 @@ class StructureCheckerTest extends TestCase
      */
     public function testFieldsWithValueCheck(): void
     {
-        $checker = (new StructuresCheckerTool())->withAddMatchPolitics([new FieldWithValueCondPolitic()]);
+        $checker = (new StructuresCheckerTool())->withAddStructMatchPolitics([new FieldWithValueCondPolitic()]);
 
         $struct = new Structure(['f1' => 'Mary']);
         $cond = Fit::field('f1')->val('=', 'mary');
@@ -62,7 +62,7 @@ class StructureCheckerTest extends TestCase
      */
     public function testUnknownPolitics(): void
     {
-        $checker = (new StructuresCheckerTool())->withAddMatchPolitics([new FieldWithFieldCondPolitic()]);
+        $checker = (new StructuresCheckerTool())->withAddStructMatchPolitics([new FieldWithFieldCondPolitic()]);
         $struct = new Structure(['f1' => 'Mary', 'f2' => 'mary']);
         $cond = Fit::field('f1')->val('=', 'mary');
         $this->expectException(NotRegistredPoliticException::class);
@@ -75,7 +75,7 @@ class StructureCheckerTest extends TestCase
      */
     public function testPoliticDefinitionCheck(): void
     {
-        $checker = (new StructuresCheckerTool())->withAddMatchPolitics([
+        $checker = (new StructuresCheckerTool())->withAddStructMatchPolitics([
             new FieldWithValueCondPolitic(),
             new FieldWithFieldCondPolitic(),
             new FieldWithArrayCondPolitic(),

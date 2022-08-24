@@ -4,34 +4,37 @@ namespace Mnemesong\OrmTestUnit\checker\politics\abstracts;
 
 use Mnemesong\Fit\conditions\abstracts\CondInterface;
 use Mnemesong\Fit\conditions\FieldWithArrayCond;
+use Mnemesong\Fit\conditions\PolyCompositeCond;
 use Mnemesong\Fit\conditions\UnaryCompositeCond;
 use Mnemesong\Fit\Fit;
+use Mnemesong\OrmTest\checker\compositeMatchPolitics\CompositePolyPolitic;
 use Mnemesong\OrmTest\checker\compositeMatchPolitics\CompositeUnaryPolitic;
 use Mnemesong\OrmTest\checker\structureMatchPolitics\FieldWithValueCondPolitic;
 use Mnemesong\OrmTest\checker\StructuresCheckerTool;
-use Mnemesong\OrmTestStubs\conds\ConstCond;
 use Mnemesong\OrmTestStubs\politics\ConstCondPolitic;
 use Mnemesong\Structure\Structure;
 use PHPUnit\Framework\TestCase;
+use Webmozart\Assert\Assert;
 
-class CompositeUnaryPoliticTestTemplate extends TestCase
+class CompositePolyPoliticTestTemplate extends TestCase
 {
     /**
-     * @return CompositeUnaryPolitic
+     * @return CompositePolyPolitic
      */
-    protected function getPolitic(): CompositeUnaryPolitic
+    protected function getPolitic(): CompositePolyPolitic
     {
-        return new CompositeUnaryPolitic();
+        return new CompositePolyPolitic();
     }
 
     /**
      * @param string $operator
-     * @param CondInterface $cond
-     * @return UnaryCompositeCond
+     * @param array<CondInterface> $conds
+     * @return PolyCompositeCond
      */
-    protected function getCond(string $operator, CondInterface $cond): UnaryCompositeCond
+    protected function getCond(string $operator, array $conds): PolyCompositeCond
     {
-        return Fit::notThat($cond);
+        Assert::allIsAOf($conds, CondInterface::class);
+        return new PolyCompositeCond($operator, $conds);
     }
 
     /**
@@ -40,7 +43,7 @@ class CompositeUnaryPoliticTestTemplate extends TestCase
     protected function getCheckerTool(): StructuresCheckerTool
     {
         return (new StructuresCheckerTool())->withAddStructMatchPolitics([
-            new ConstCondPolitic(),
+            new ConstCondPolitic()
         ]);
     }
 
@@ -58,6 +61,6 @@ class CompositeUnaryPoliticTestTemplate extends TestCase
      */
     public function testCheckingCondClass(): void
     {
-        $this->assertEquals(UnaryCompositeCond::class, $this->getPolitic()->checkingCondClass());
+        $this->assertEquals(PolyCompositeCond::class, $this->getPolitic()->checkingCondClass());
     }
 }
