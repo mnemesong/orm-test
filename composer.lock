@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "mnemesong/fit",
-            "version": "0.1",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mnemesong/fit.git",
-                "reference": "5871477b3c34457f429e40a8097136d6b46a4da0"
+                "reference": "6a35fa3dc2ab8c7b25d68d24d91ee1c0cc97ae91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mnemesong/fit/zipball/5871477b3c34457f429e40a8097136d6b46a4da0",
-                "reference": "5871477b3c34457f429e40a8097136d6b46a4da0",
+                "url": "https://api.github.com/repos/mnemesong/fit/zipball/6a35fa3dc2ab8c7b25d68d24d91ee1c0cc97ae91",
+                "reference": "6a35fa3dc2ab8c7b25d68d24d91ee1c0cc97ae91",
                 "shasum": ""
             },
             "require": {
@@ -53,9 +53,9 @@
             "description": "The package provides objects and an interface for build match conditions.",
             "support": {
                 "issues": "https://github.com/mnemesong/fit/issues",
-                "source": "https://github.com/mnemesong/fit/tree/0.1"
+                "source": "https://github.com/mnemesong/fit/tree/0.1.1"
             },
-            "time": "2022-08-22T15:33:29+00:00"
+            "time": "2022-08-23T23:20:22+00:00"
         },
         {
             "name": "mnemesong/orm-core",
