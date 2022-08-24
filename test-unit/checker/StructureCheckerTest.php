@@ -4,6 +4,7 @@ namespace Mnemesong\OrmTestUnit\checker;
 
 use Mnemesong\Fit\conditions\FieldWithFieldCond;
 use Mnemesong\Fit\Fit;
+use Mnemesong\OrmTest\checker\politics\FieldUnaryCondPolitic;
 use Mnemesong\OrmTest\checker\politics\FieldWithArrayCondPolitic;
 use Mnemesong\OrmTest\checker\politics\FieldWithFieldCondPolitic;
 use Mnemesong\OrmTest\checker\politics\FieldWithValueCondPolitic;
@@ -78,6 +79,7 @@ class StructureCheckerTest extends TestCase
             new FieldWithValueCondPolitic(),
             new FieldWithFieldCondPolitic(),
             new FieldWithArrayCondPolitic(),
+            new FieldUnaryCondPolitic(),
         ]);
 
         $struct = new Structure(['f1' => 'Mary', 'f2' => 'mary']);
@@ -93,5 +95,8 @@ class StructureCheckerTest extends TestCase
         $cond = Fit::field('f1')->arr('in', ['mary']);
         $this->assertEquals(true, $checker->matchStructure($struct, $cond->asCaseInsensitive()));
         $this->assertEquals(false, $checker->matchStructure($struct, $cond->asCaseSensitive()));
+
+        $cond = Fit::field('f1')->is('null');
+        $this->assertEquals(false, $checker->matchStructure($struct, $cond));
     }
 }
