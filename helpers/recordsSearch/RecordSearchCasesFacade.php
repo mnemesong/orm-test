@@ -11,8 +11,12 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetAllUuidSortedAs
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetAllUuidSortedDescCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetCondEqNullValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetCondEqValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetCondLessAsStrValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetCondMoreAsNumValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetCondMoreValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetCondNotEqEmptyValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetCondNotEqValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetCondNotMoreAsNumValueCase;
 
 class RecordSearchCasesFacade
 {
@@ -32,6 +36,10 @@ class RecordSearchCasesFacade
             new GetCondNotEqValueCase(),
             new GetCondEqNullValueCase(),
             new GetCondNotEqEmptyValueCase(),
+            new GetCondMoreValueCase(),
+            new GetCondMoreAsNumValueCase(),
+            new GetCondLessAsStrValueCase(),
+            new GetCondNotMoreAsNumValueCase(),
         ];
     }
 }
