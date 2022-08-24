@@ -1,25 +1,25 @@
 <?php
 
-namespace Mnemesong\OrmTest\checker\politics;
+namespace Mnemesong\OrmTest\checker\structureMatchPolitics;
 
 use Mnemesong\Fit\conditions\abstracts\CondInterface;
 use Mnemesong\Fit\conditions\FieldWithArrayCond;
-use Mnemesong\Fit\conditions\UnaryFieldCond;
+use Mnemesong\Fit\conditions\FieldWithFieldCond;
 use Mnemesong\OrmTest\checker\operatorMatch\ArrayOperatorsMatch;
-use Mnemesong\OrmTest\checker\operatorMatch\UnaryOperatorsMatch;
 use Mnemesong\OrmTest\checker\StructureMatchPoliticInterface;
+use Mnemesong\OrmTest\checker\StructuresCheckerTool;
 use Mnemesong\OrmTest\exceptions\UnknownOperatorException;
 use Mnemesong\Structure\Structure;
 use Webmozart\Assert\Assert;
 
-class FieldUnaryCondPolitic implements StructureMatchPoliticInterface
+class FieldWithArrayCondPolitic implements StructureMatchPoliticInterface
 {
     /**
      * @return string
      */
     public function checkingCondClass(): string
     {
-        return UnaryFieldCond::class;
+        return FieldWithArrayCond::class;
     }
 
     /**
@@ -29,15 +29,16 @@ class FieldUnaryCondPolitic implements StructureMatchPoliticInterface
      */
     public function isMatch(Structure $struct, CondInterface $cond): bool
     {
-        Assert::isAOf($cond, UnaryFieldCond::class);
-        /* @var UnaryFieldCond $cond */
+        Assert::isAOf($cond, FieldWithArrayCond::class);
+        /* @var FieldWithArrayCond $cond */
         $val = $struct->get($cond->getField());
+        $compArr = $cond->getValArr();
         $operator = $cond->getOperator();
 
-        if ($operator === 'null') {
-            return UnaryOperatorsMatch::forIsNullOperatorMatch($val);
-        } elseif ($operator === '!null') {
-            return UnaryOperatorsMatch::forIsNotNullOperatorMatch($val);
+        if ($operator === 'in') {
+            return ArrayOperatorsMatch::forInOperatorMatch($val, $compArr, $cond->isCaseInsensitive());
+        } elseif ($operator === '!in') {
+            return ArrayOperatorsMatch::forNotInOperatorMatch($val, $compArr, $cond->isCaseInsensitive());
         }
         throw UnknownOperatorException::operator($operator);
     }

@@ -1,24 +1,26 @@
 <?php
 
-namespace Mnemesong\OrmTest\checker\politics;
+namespace Mnemesong\OrmTest\checker\structureMatchPolitics;
 
 use Mnemesong\Fit\conditions\abstracts\CondInterface;
 use Mnemesong\Fit\conditions\FieldWithArrayCond;
-use Mnemesong\Fit\conditions\FieldWithFieldCond;
+use Mnemesong\Fit\conditions\UnaryFieldCond;
 use Mnemesong\OrmTest\checker\operatorMatch\ArrayOperatorsMatch;
+use Mnemesong\OrmTest\checker\operatorMatch\UnaryOperatorsMatch;
 use Mnemesong\OrmTest\checker\StructureMatchPoliticInterface;
+use Mnemesong\OrmTest\checker\StructuresCheckerTool;
 use Mnemesong\OrmTest\exceptions\UnknownOperatorException;
 use Mnemesong\Structure\Structure;
 use Webmozart\Assert\Assert;
 
-class FieldWithArrayCondPolitic implements StructureMatchPoliticInterface
+class FieldUnaryCondPolitic implements StructureMatchPoliticInterface
 {
     /**
      * @return string
      */
     public function checkingCondClass(): string
     {
-        return FieldWithArrayCond::class;
+        return UnaryFieldCond::class;
     }
 
     /**
@@ -28,16 +30,15 @@ class FieldWithArrayCondPolitic implements StructureMatchPoliticInterface
      */
     public function isMatch(Structure $struct, CondInterface $cond): bool
     {
-        Assert::isAOf($cond, FieldWithArrayCond::class);
-        /* @var FieldWithArrayCond $cond */
+        Assert::isAOf($cond, UnaryFieldCond::class);
+        /* @var UnaryFieldCond $cond */
         $val = $struct->get($cond->getField());
-        $compArr = $cond->getValArr();
         $operator = $cond->getOperator();
 
-        if ($operator === 'in') {
-            return ArrayOperatorsMatch::forInOperatorMatch($val, $compArr, $cond->isCaseInsensitive());
-        } elseif ($operator === '!in') {
-            return ArrayOperatorsMatch::forNotInOperatorMatch($val, $compArr, $cond->isCaseInsensitive());
+        if ($operator === 'null') {
+            return UnaryOperatorsMatch::forIsNullOperatorMatch($val);
+        } elseif ($operator === '!null') {
+            return UnaryOperatorsMatch::forIsNotNullOperatorMatch($val);
         }
         throw UnknownOperatorException::operator($operator);
     }

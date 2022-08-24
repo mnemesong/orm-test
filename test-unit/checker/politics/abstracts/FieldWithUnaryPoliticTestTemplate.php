@@ -5,8 +5,8 @@ namespace Mnemesong\OrmTestUnit\checker\politics\abstracts;
 use Mnemesong\Fit\conditions\FieldWithArrayCond;
 use Mnemesong\Fit\conditions\UnaryFieldCond;
 use Mnemesong\Fit\Fit;
-use Mnemesong\OrmTest\checker\politics\FieldUnaryCondPolitic;
-use Mnemesong\OrmTest\checker\politics\FieldWithArrayCondPolitic;
+use Mnemesong\OrmTest\checker\structureMatchPolitics\FieldUnaryCondPolitic;
+use Mnemesong\OrmTest\checker\structureMatchPolitics\FieldWithArrayCondPolitic;
 use Mnemesong\Structure\Structure;
 use PHPUnit\Framework\TestCase;
 

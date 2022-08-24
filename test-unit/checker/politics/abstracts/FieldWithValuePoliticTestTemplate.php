@@ -4,7 +4,7 @@ namespace Mnemesong\OrmTestUnit\checker\politics\abstracts;
 
 use Mnemesong\Fit\conditions\FieldWithValCond;
 use Mnemesong\Fit\Fit;
-use Mnemesong\OrmTest\checker\politics\FieldWithValueCondPolitic;
+use Mnemesong\OrmTest\checker\structureMatchPolitics\FieldWithValueCondPolitic;
 use Mnemesong\Structure\Structure;
 use PHPUnit\Framework\TestCase;
 
