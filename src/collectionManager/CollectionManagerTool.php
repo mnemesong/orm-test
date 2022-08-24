@@ -6,6 +6,7 @@ use Mnemesong\Fit\conditions\abstracts\CondInterface;
 use Mnemesong\OrmCore\query\RecordsQuery;
 use Mnemesong\OrmTest\checker\StructuresCheckerTool;
 use Mnemesong\OrmTest\DefaultConfiguredCheckedFacade;
+use Mnemesong\OrmTest\exceptions\UnknownSortTypeException;
 use Mnemesong\Structure\collections\StructureCollection;
 use Mnemesong\Structure\Structure;
 
@@ -45,12 +46,16 @@ class CollectionManagerTool
             $structs = $structs->filteredBy(fn(Structure $s) => ($checker->matchStructure($s, $cond)));
         }
         $structs = $structs->sortedBy(function (Structure $s1, Structure $s2) use ($sortFields) {
-            foreach ($sortFields as $sf)
+            foreach ($sortFields as $sf => $sortType)
             {
-                if ($s1->get($sf) > $s2->get($sf)) {
-                    return -1;
-                } elseif ($s1->get($sf) > $s2->get($sf)) {
-                    return 1;
+                $r = strcmp($s1->get($sf),$s2->get($sf));
+                if($r != 0) {
+                    if($sortType === 'asc') {
+                        return $r;
+                    } elseif ($sortType === 'desc') {
+                        return -$r;
+                    }
+                    throw UnknownSortTypeException::sortType($sortType, $sf);
                 }
             }
             return 0;

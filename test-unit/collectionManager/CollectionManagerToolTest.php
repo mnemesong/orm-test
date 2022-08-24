@@ -25,9 +25,8 @@ class CollectionManagerToolTest extends TestCase
         Assert::allIsAOf($testCases, RecordsSearchTestCase::class);
         foreach ($testCases as $case)
         {
-            $initStructs = $case->getInitStructures();
             $result = $colManager->searchInCollection(
-                new StructureCollection($initStructs),
+                new StructureCollection($case->getInitStructures()),
                 $case->getSelectFields(),
                 $case->getSortFields(),
                 $case->getCond(),

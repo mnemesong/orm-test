@@ -4,6 +4,7 @@ namespace Mnemesong\OrmTestHelpers\recordsSearch;
 
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetAllCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\GetAllSortedCase;
 
 class RecordSearchCasesFacade
 {
@@ -14,6 +15,7 @@ class RecordSearchCasesFacade
     {
         return [
             new GetAllCase(),
+            new GetAllSortedCase(),
         ];
     }
 }
