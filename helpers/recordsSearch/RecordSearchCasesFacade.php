@@ -9,6 +9,13 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqValueWithSpecialFieldsCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqWithSortingAscCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqWithSortingDescCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\GetCondMoreValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more\GetCondMoreEmptyValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more\GetCondMoreNullValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more\GetCondMoreValueLimitedCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more\GetCondMoreValueSortingAscCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more\GetCondMoreValueSortingDescCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more\GetCondMoreValueWithSpecialFieldsCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\notEq\GetCondNotEqEmptyValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\notEq\GetCondNotEqNullValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\notEq\GetCondNotEqValueCase;
@@ -58,6 +65,15 @@ class RecordSearchCasesFacade
             new GetCondNotEqValueWithSpecialFieldsCase(),
             new GetCondNotEqWithSortingAscCase(),
             new GetCondNotEqWithSortingDescCase(),
+
+            //fieldValueMore
+            new GetCondMoreEmptyValueCase(),
+            new GetCondMoreNullValueCase(),
+            new GetCondMoreValueCase(),
+            new GetCondMoreValueLimitedCase(),
+            new GetCondMoreValueSortingAscCase(),
+            new GetCondMoreValueSortingDescCase(),
+            new GetCondMoreValueWithSpecialFieldsCase(),
         ];
     }
 }
