@@ -18,6 +18,15 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\mor
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more\GetCondMoreValueSortingAscCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more\GetCondMoreValueSortingDescCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more\GetCondMoreValueWithSpecialFieldsCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\moreOrEq\GetCondMoreOrEqAsNumValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\moreOrEq\GetCondMoreOrEqEmptyValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\moreOrEq\GetCondMoreOrEqNullValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\moreOrEq\GetCondMoreOrEqUuidValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\moreOrEq\GetCondMoreOrEqValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\moreOrEq\GetCondMoreOrEqValueLimitedCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\moreOrEq\GetCondMoreOrEqValueSortingAscCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\moreOrEq\GetCondMoreOrEqValueSortingDescCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\moreOrEq\GetCondMoreOrEqValueWithSpecialFieldsCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\notEq\GetCondNotEqAsNumValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\notEq\GetCondNotEqEmptyValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\notEq\GetCondNotEqNullValueCase;
@@ -81,6 +90,17 @@ class RecordSearchCasesFacade
             new GetCondMoreValueSortingAscCase(),
             new GetCondMoreValueSortingDescCase(),
             new GetCondMoreValueWithSpecialFieldsCase(),
+
+            //fieldValueMoreOrEq
+            new GetCondMoreOrEqAsNumValueCase(),
+            new GetCondMoreOrEqEmptyValueCase(),
+            new GetCondMoreOrEqNullValueCase(),
+            new GetCondMoreOrEqUuidValueCase(),
+            new GetCondMoreOrEqValueCase(),
+            new GetCondMoreOrEqValueLimitedCase(),
+            new GetCondMoreOrEqValueSortingAscCase(),
+            new GetCondMoreOrEqValueSortingDescCase(),
+            new GetCondMoreOrEqValueWithSpecialFieldsCase(),
         ];
     }
 }
