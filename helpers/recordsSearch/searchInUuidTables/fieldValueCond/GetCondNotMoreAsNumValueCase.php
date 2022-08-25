@@ -1,18 +1,16 @@
 <?php
 
-namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables;
+namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond;
 
-use Mnemesong\Fit\conditions\abstracts\CondInterface;
 use Mnemesong\Fit\Fit;
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
 use Mnemesong\Structure\Structure;
 
-final class GetCondMoreAsNumValueCase extends RecordsSearchTestCase
+final class GetCondNotMoreAsNumValueCase extends RecordsSearchTestCase
 {
     public function __construct()
     {
-        $this->cond = Fit::field('num')->val('>', '20')->asNum();
-        $this->selectFields = ['num'];
+        $this->cond = Fit::field('num')->val('!>', '20')->asNum();
     }
 
     public function getInitStructures(): array
@@ -28,7 +26,9 @@ final class GetCondMoreAsNumValueCase extends RecordsSearchTestCase
     public function getResultStructures(): array
     {
         return [
-            self::buildShort('125'),
+            self::build('fea7e479-47e4-4b54-9cdf-482e7ab6d8de', 'Will',null),
+            self::build('27ba8450-ce97-4453-bf1b-f547ed339595', null,'11'),
+            self::build('42e8413e-45c3-44c8-a1fe-1466bc876fc5', 'Mira','2'),
         ];
     }
 
@@ -43,8 +43,4 @@ final class GetCondMoreAsNumValueCase extends RecordsSearchTestCase
         return new Structure(['uuid' => $uuid, 'name' => $name, 'num' => $num]);
     }
 
-    protected static function buildShort(?string $num): Structure
-    {
-        return new Structure(['num' => $num]);
-    }
 }

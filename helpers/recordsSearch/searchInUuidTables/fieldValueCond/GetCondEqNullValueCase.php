@@ -1,13 +1,17 @@
 <?php
 
-namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables;
+namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond;
 
+use Mnemesong\Fit\Fit;
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
 use Mnemesong\Structure\Structure;
 
-final class GetAllSpecialFieldsCase extends RecordsSearchTestCase
+final class GetCondEqNullValueCase extends RecordsSearchTestCase
 {
-    protected array $selectFields = ['name', 'date'];
+    public function __construct()
+    {
+        $this->cond = Fit::field('name')->val('=', null);
+    }
 
     public function getInitStructures(): array
     {
@@ -22,10 +26,7 @@ final class GetAllSpecialFieldsCase extends RecordsSearchTestCase
     public function getResultStructures(): array
     {
         return [
-            self::buildShort('James','2022-11-02'),
-            self::buildShort('Will',null),
-            self::buildShort(null,'2002-12-01'),
-            self::buildShort('Mira','2008-02-12'),
+            self::build('27ba8450-ce97-4453-bf1b-f547ed339595', null,'2002-12-01'),
         ];
     }
 
@@ -38,16 +39,5 @@ final class GetAllSpecialFieldsCase extends RecordsSearchTestCase
     protected static function build(string $uuid, ?string $name, ?string $date): Structure
     {
         return new Structure(['uuid' => $uuid, 'name' => $name, 'date' => $date]);
-    }
-
-    /**
-     * @param string $uuid
-     * @param string|null $name
-     * @param string|null $date
-     * @return Structure
-     */
-    protected static function buildShort(?string $name, ?string $date): Structure
-    {
-        return new Structure(['name' => $name, 'date' => $date]);
     }
 }
