@@ -48,7 +48,17 @@ class CollectionManagerTool
         $structs = $structs->sortedBy(function (Structure $s1, Structure $s2) use ($sortFields) {
             foreach ($sortFields as $sf => $sortType)
             {
-                $r = strcmp($s1->get($sf),$s2->get($sf));
+                $val1 = $s1->get($sf);
+                $val2 = $s2->get($sf);
+                if (is_null($val1) && is_null($val2)) {
+                    return 0;
+                } elseif (is_null($val1)) {
+                    $r = strcmp('', '1');
+                } elseif (is_null($val2)) {
+                    $r = strcmp('1', '');
+                } else {
+                    $r = strcmp($val1, $val2);
+                }
                 if($r != 0) {
                     if($sortType === 'asc') {
                         return $r;
