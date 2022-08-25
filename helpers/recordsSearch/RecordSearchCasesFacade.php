@@ -11,6 +11,15 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqWithSortingAscCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqWithSortingDescCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\GetCondNotMoreAsNumValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\less\GetCondLessAsNumValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\less\GetCondLessEmptyValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\less\GetCondLessNullValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\less\GetCondLessUuidValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\less\GetCondLessValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\less\GetCondLessValueLimitedCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\less\GetCondLessValueSortingAscCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\less\GetCondLessValueSortingDescCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\less\GetCondLessValueWithSpecialFieldsCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more\GetCondMoreAsNumValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more\GetCondMoreEmptyValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more\GetCondMoreNullValueCase;
@@ -121,6 +130,17 @@ class RecordSearchCasesFacade
             new GetCondNotMoreValueSortingAscCase(),
             new GetCondNotMoreValueSortingDescCase(),
             new GetCondNotMoreValueWithSpecialFieldsCase(),
+
+            //fieldValueLess
+            new GetCondLessAsNumValueCase(),
+            new GetCondLessEmptyValueCase(),
+            new GetCondLessNullValueCase(),
+            new GetCondLessUuidValueCase(),
+            new GetCondLessValueCase(),
+            new GetCondLessValueLimitedCase(),
+            new GetCondLessValueSortingAscCase(),
+            new GetCondLessValueSortingDescCase(),
+            new GetCondLessValueWithSpecialFieldsCase(),
         ];
     }
 }
