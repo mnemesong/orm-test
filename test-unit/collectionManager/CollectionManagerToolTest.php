@@ -32,7 +32,8 @@ class CollectionManagerToolTest extends TestCase
                 $case->getCond(),
                 $case->getLimit()
             );
-            $this->assertEquals($case->getResultStructures(), $result->getAll());
+            $this->assertEquals($case->getResultStructures(), $result->getAll(), 'Failed of testcase'
+                . get_class($case));
         }
     }
 

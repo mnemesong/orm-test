@@ -1,16 +1,17 @@
 <?php
 
-namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond;
+namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\notEq;
 
 use Mnemesong\Fit\Fit;
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
 use Mnemesong\Structure\Structure;
 
-final class GetCondNotEqValueCase extends RecordsSearchTestCase
+final class GetCondNotEqValueWithSpecialFieldsCase extends RecordsSearchTestCase
 {
     public function __construct()
     {
-        $this->cond = Fit::field('date')->val('!=', '2002-12-01');
+        $this->cond = Fit::field('name')->val('!=', 'James');
+        $this->selectFields = ['name', 'date'];
     }
 
     public function getInitStructures(): array
@@ -26,9 +27,9 @@ final class GetCondNotEqValueCase extends RecordsSearchTestCase
     public function getResultStructures(): array
     {
         return [
-            self::build('591d9116-a7b2-42d7-b8aa-2010393cf28a', 'James','2022-11-02'),
-            self::build('fea7e479-47e4-4b54-9cdf-482e7ab6d8de', 'Will',null),
-            self::build('42e8413e-45c3-44c8-a1fe-1466bc876fc5', 'Mira','2008-02-12'),
+            self::buildShort('Will',null),
+            self::buildShort(null,'2002-12-01'),
+            self::buildShort('Mira','2008-02-12'),
         ];
     }
 
@@ -41,5 +42,10 @@ final class GetCondNotEqValueCase extends RecordsSearchTestCase
     protected static function build(string $uuid, ?string $name, ?string $date): Structure
     {
         return new Structure(['uuid' => $uuid, 'name' => $name, 'date' => $date]);
+    }
+
+    protected static function buildShort(?string $name, ?string $date): Structure
+    {
+        return new Structure(['name' => $name, 'date' => $date]);
     }
 }

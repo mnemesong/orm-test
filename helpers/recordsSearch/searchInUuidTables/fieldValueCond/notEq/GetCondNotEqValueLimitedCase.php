@@ -1,16 +1,17 @@
 <?php
 
-namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond;
+namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\notEq;
 
 use Mnemesong\Fit\Fit;
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
 use Mnemesong\Structure\Structure;
 
-final class GetCondNotEqEmptyValueCase extends RecordsSearchTestCase
+final class GetCondNotEqValueLimitedCase extends RecordsSearchTestCase
 {
     public function __construct()
     {
-        $this->cond = Fit::field('date')->val('!=', '');
+        $this->cond = Fit::field('name')->val('!=', 'James');
+        $this->limit = 2;
     }
 
     public function getInitStructures(): array
@@ -18,17 +19,18 @@ final class GetCondNotEqEmptyValueCase extends RecordsSearchTestCase
         return [
             self::build('591d9116-a7b2-42d7-b8aa-2010393cf28a', 'James','2022-11-02'),
             self::build('fea7e479-47e4-4b54-9cdf-482e7ab6d8de', 'Will',null),
-            self::build('27ba8450-ce97-4453-bf1b-f547ed339595', null,'2008-02-12'),
-            self::build('42e8413e-45c3-44c8-a1fe-1466bc876fc5', 'Mira',''),
+            self::build('27ba8450-ce97-4453-bf1b-f547ed339595', null,'2002-12-01'),
+            self::build('42e8413e-45c3-44c8-a1fe-1466bc876fc5', 'Mira','2008-02-12'),
+            self::build('be60ed91-94c2-4bf8-a573-3e9ffb475bdd', 'James','2022-11-03'),
+            self::build('4c639344-63f1-4702-a3eb-ca26d7e37cdb', 'James','2022-11-04'),
         ];
     }
 
     public function getResultStructures(): array
     {
         return [
-            self::build('591d9116-a7b2-42d7-b8aa-2010393cf28a', 'James','2022-11-02'),
             self::build('fea7e479-47e4-4b54-9cdf-482e7ab6d8de', 'Will',null),
-            self::build('27ba8450-ce97-4453-bf1b-f547ed339595', null,'2008-02-12'),
+            self::build('27ba8450-ce97-4453-bf1b-f547ed339595', null,'2002-12-01'),
         ];
     }
 
