@@ -1,12 +1,12 @@
 <?php
 
-namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond;
+namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more;
 
 use Mnemesong\Fit\Fit;
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
 use Mnemesong\Structure\Structure;
 
-final class GetCondMoreValueCase extends RecordsSearchTestCase
+final class GetCondMoreUuidValueCase extends RecordsSearchTestCase
 {
     public function __construct()
     {

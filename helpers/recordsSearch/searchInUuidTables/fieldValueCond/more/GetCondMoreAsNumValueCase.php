@@ -1,6 +1,6 @@
 <?php
 
-namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond;
+namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\more;
 
 use Mnemesong\Fit\Fit;
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
