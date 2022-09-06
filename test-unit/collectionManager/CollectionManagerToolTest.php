@@ -25,13 +25,18 @@ class CollectionManagerToolTest extends TestCase
         Assert::allIsAOf($testCases, RecordsSearchTestCase::class);
         foreach ($testCases as $case)
         {
-            $result = $colManager->searchInCollection(
-                new StructureCollection($case->getInitStructures()),
-                $case->getSelectFields(),
-                $case->getSortFields(),
-                $case->getCond(),
-                $case->getLimit()
-            );
+            try {
+                $result = $colManager->searchInCollection(
+                    new StructureCollection($case->getInitStructures()),
+                    $case->getSelectFields(),
+                    $case->getSortFields(),
+                    $case->getCond(),
+                    $case->getLimit()
+                );
+            } catch (\Exception $exception) {
+                throw new \RuntimeException('Error while testing ' . get_class($case)
+                    . ' : ' . $exception->__toString());
+            }
             $this->assertEquals($case->getResultStructures(), $result->getAll(), 'Failed of testcase'
                 . get_class($case));
         }
