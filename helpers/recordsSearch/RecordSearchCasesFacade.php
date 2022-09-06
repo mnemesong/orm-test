@@ -85,6 +85,13 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\less\GetCondLessSortingDescCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\less\GetCondLessSpecialFieldsCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\less\GetCondLessStringOnlyCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\lessOrEq\GetCondLessOrEqAsNumCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\lessOrEq\GetCondLessOrEqAsStrCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\lessOrEq\GetCondLessOrEqLimitCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\lessOrEq\GetCondLessOrEqSortingAscCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\lessOrEq\GetCondLessOrEqSortingDescCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\lessOrEq\GetCondLessOrEqSpecialFieldsCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\lessOrEq\GetCondLessOrEqStringOnlyCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllLimitedCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllMultifieldSortedCase1;
@@ -215,6 +222,15 @@ class RecordSearchCasesFacade
             new GetCondLessSortingDescCase(),
             new GetCondLessSpecialFieldsCase(),
             new GetCondLessStringOnlyCase(),
+
+            //fieldFieldLessOrEq
+            new GetCondLessOrEqAsNumCase(),
+            new GetCondLessOrEqAsStrCase(),
+            new GetCondLessOrEqLimitCase(),
+            new GetCondLessOrEqSortingAscCase(),
+            new GetCondLessOrEqSortingDescCase(),
+            new GetCondLessOrEqSpecialFieldsCase(),
+            new GetCondLessOrEqStringOnlyCase(),
         ];
     }
 }
