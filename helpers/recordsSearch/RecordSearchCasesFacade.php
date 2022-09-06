@@ -71,6 +71,13 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\not
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\notMore\GetCondNotMoreValueSortingAscCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\notMore\GetCondNotMoreValueSortingDescCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\notMore\GetCondNotMoreValueWithSpecialFieldsCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\eq\GetCondEqAsNumCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\eq\GetCondEqAsStrCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\eq\GetCondEqLimitCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\eq\GetCondEqSortingAscCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\eq\GetCondEqSortingDescCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\eq\GetCondEqStringOnlyCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\eq\GetCondEqWithSpecialFieldsCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllLimitedCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllMultifieldSortedCase1;
@@ -87,6 +94,7 @@ class RecordSearchCasesFacade
     public static function getAllCases(): array
     {
         return [
+            //===FieldWithValue===
             //withoutCond
             new GetAllCase(),
             new GetAllLimitedCase(),
@@ -181,6 +189,16 @@ class RecordSearchCasesFacade
             new GetCondNotLessValueSortingAscCase(),
             new GetCondNotLessValueSortingDescCase(),
             new GetCondNotLessValueWithSpecialFieldsCase(),
+
+            //===FieldWithField===
+            //fieldFieldEq
+            new GetCondEqAsNumCase(),
+            new GetCondEqAsStrCase(),
+            new GetCondEqLimitCase(),
+            new GetCondEqSortingAscCase(),
+            new GetCondEqSortingDescCase(),
+            new GetCondEqStringOnlyCase(),
+            new GetCondEqWithSpecialFieldsCase(),
         ];
     }
 }
