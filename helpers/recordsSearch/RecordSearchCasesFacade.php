@@ -78,6 +78,13 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\eq\GetCondEqSortingDescCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\eq\GetCondEqStringOnlyCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\eq\GetCondEqWithSpecialFieldsCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\less\GetCondLessAsNumCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\less\GetCondLessAsStrCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\less\GetCondLessLimitCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\less\GetCondLessSortingAscCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\less\GetCondLessSortingDescCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\less\GetCondLessSpecialFieldsCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\less\GetCondLessStringOnlyCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllLimitedCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllMultifieldSortedCase1;
@@ -199,6 +206,15 @@ class RecordSearchCasesFacade
             new GetCondEqSortingDescCase(),
             new GetCondEqStringOnlyCase(),
             new GetCondEqWithSpecialFieldsCase(),
+
+            //fieldFieldLess
+            new GetCondLessAsNumCase(),
+            new GetCondLessAsStrCase(),
+            new GetCondLessLimitCase(),
+            new GetCondLessSortingAscCase(),
+            new GetCondLessSortingDescCase(),
+            new GetCondLessSpecialFieldsCase(),
+            new GetCondLessStringOnlyCase(),
         ];
     }
 }
