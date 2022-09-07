@@ -17,7 +17,12 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldValueCond\NegatCondLessOrEqValueLimitedCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldValueCond\NegatCondLessValueSortingDescCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldValueCond\NegatCondMoreAsNumValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldValueCond\NegatCondMoreOrEqAsNumValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldValueCond\NegatCondMoreOrEqValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldValueCond\NegatCondMoreValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldValueCond\NegatCondNotEqEmptyValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldValueCond\NegatCondNotEqNullValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldValueCond\NegatCondNotEqValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\in\GetCondInWithEmptyValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\in\GetCondInWithNullValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\in\GetCondInWithNumValueCase;
@@ -378,6 +383,11 @@ class RecordSearchCasesFacade
             new NegatCondLessOrEqValueLimitedCase(),
             new NegatCondMoreAsNumValueCase(),
             new NegatCondMoreValueCase(),
+            new NegatCondMoreOrEqAsNumValueCase(),
+            new NegatCondMoreOrEqValueCase(),
+            new NegatCondNotEqEmptyValueCase(),
+            new NegatCondNotEqNullValueCase(),
+            new NegatCondNotEqValueCase(),
         ];
     }
 }
