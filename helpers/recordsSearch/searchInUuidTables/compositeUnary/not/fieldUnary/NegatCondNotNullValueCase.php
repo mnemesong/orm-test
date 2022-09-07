@@ -1,16 +1,16 @@
 <?php
 
-namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not;
+namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldUnary;
 
 use Mnemesong\Fit\Fit;
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
 use Mnemesong\Structure\Structure;
 
-final class NegatCondInWithNullValueCase extends RecordsSearchTestCase
+final class NegatCondNotNullValueCase extends RecordsSearchTestCase
 {
     public function __construct()
     {
-        $this->cond = Fit::notThat(Fit::field('date')->arr('in', ['2022-11-02', null]));
+        $this->cond = Fit::notThat(Fit::field('date')->is('!null'));
     }
 
     public function getInitStructures(): array
@@ -27,8 +27,7 @@ final class NegatCondInWithNullValueCase extends RecordsSearchTestCase
     public function getResultStructures(): array
     {
         return [
-            self::build('ab3dae93-fece-4bde-9926-51836f588001', '21',''),
-            self::build('42e8413e-45c3-44c8-a1fe-1466bc876fc5', '123','2008-02-12'),
+            self::build('fea7e479-47e4-4b54-9cdf-482e7ab6d8de', '21',null),
         ];
     }
 

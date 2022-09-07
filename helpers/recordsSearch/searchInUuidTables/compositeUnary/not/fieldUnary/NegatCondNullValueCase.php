@@ -1,16 +1,16 @@
 <?php
 
-namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not;
+namespace Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldUnary;
 
 use Mnemesong\Fit\Fit;
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
 use Mnemesong\Structure\Structure;
 
-final class NegatCondInWithStrValueCase extends RecordsSearchTestCase
+final class NegatCondNullValueCase extends RecordsSearchTestCase
 {
     public function __construct()
     {
-        $this->cond = Fit::notThat(Fit::field('date')->arr('in', ['2022-11-02', '2020-01-01']));
+        $this->cond = Fit::notThat(Fit::field('date')->is('null'));
     }
 
     public function getInitStructures(): array
@@ -18,7 +18,7 @@ final class NegatCondInWithStrValueCase extends RecordsSearchTestCase
         return [
             self::build('591d9116-a7b2-42d7-b8aa-2010393cf28a', '412','2022-11-02'),
             self::build('fea7e479-47e4-4b54-9cdf-482e7ab6d8de', '21',null),
-            self::build('ab3dae93-fece-4bde-9926-51836f588001', '21','2022-10-11'),
+            self::build('ab3dae93-fece-4bde-9926-51836f588001', '21',''),
             self::build('27ba8450-ce97-4453-bf1b-f547ed339595', null,'2022-11-02'),
             self::build('42e8413e-45c3-44c8-a1fe-1466bc876fc5', '123','2008-02-12'),
         ];
@@ -27,8 +27,9 @@ final class NegatCondInWithStrValueCase extends RecordsSearchTestCase
     public function getResultStructures(): array
     {
         return [
-            self::build('fea7e479-47e4-4b54-9cdf-482e7ab6d8de', '21',null),
-            self::build('ab3dae93-fece-4bde-9926-51836f588001', '21','2022-10-11'),
+            self::build('591d9116-a7b2-42d7-b8aa-2010393cf28a', '412','2022-11-02'),
+            self::build('ab3dae93-fece-4bde-9926-51836f588001', '21',''),
+            self::build('27ba8450-ce97-4453-bf1b-f547ed339595', null,'2022-11-02'),
             self::build('42e8413e-45c3-44c8-a1fe-1466bc876fc5', '123','2008-02-12'),
         ];
     }
