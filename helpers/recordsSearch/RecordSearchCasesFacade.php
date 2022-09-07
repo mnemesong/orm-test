@@ -13,6 +13,8 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\not
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\notIn\GetCondNotInWithNumValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\notIn\GetCondNotInWithStrValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\notIn\GetCondNotInWithStrValueSortedAndLimitedCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldUnaryCond\null\GetCondNotNullValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldUnaryCond\null\GetCondNullValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqAsNumValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqNullValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqValueCase;
@@ -336,6 +338,10 @@ class RecordSearchCasesFacade
             new GetCondNotInWithNumValueCase(),
             new GetCondNotInWithStrValueCase(),
             new GetCondNotInWithStrValueSortedAndLimitedCase(),
+
+            //===field-null===
+            new GetCondNotNullValueCase(),
+            new GetCondNullValueCase(),
         ];
     }
 }
