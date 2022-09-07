@@ -99,6 +99,13 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\more\GetCondMoreSortingDescCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\more\GetCondMoreSpecialFieldsCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\more\GetCondMoreStringOnlyCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\moreOrEq\GetCondMoreOrEqAsNumCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\moreOrEq\GetCondMoreOrEqAsStrCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\moreOrEq\GetCondMoreOrEqLimitCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\moreOrEq\GetCondMoreOrEqSortingAscCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\moreOrEq\GetCondMoreOrEqSortingDescCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\moreOrEq\GetCondMoreOrEqSpecialFieldsCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\moreOrEq\GetCondMoreOrEqStringOnlyCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllLimitedCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllMultifieldSortedCase1;
@@ -247,6 +254,15 @@ class RecordSearchCasesFacade
             new GetCondMoreSortingDescCase(),
             new GetCondMoreSpecialFieldsCase(),
             new GetCondMoreStringOnlyCase(),
+
+            //fieldFieldMoreOrEq
+            new GetCondMoreOrEqAsNumCase(),
+            new GetCondMoreOrEqAsStrCase(),
+            new GetCondMoreOrEqLimitCase(),
+            new GetCondMoreOrEqSortingAscCase(),
+            new GetCondMoreOrEqSortingDescCase(),
+            new GetCondMoreOrEqSpecialFieldsCase(),
+            new GetCondMoreOrEqStringOnlyCase(),
         ];
     }
 }
