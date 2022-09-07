@@ -13,7 +13,12 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldField\NegatCondFieldLessOrEqAsStrCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldField\NegatCondFieldLessSortingDescCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldField\NegatCondFieldMoreAsNumCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldField\NegatCondFieldMoreOrEqAsStrCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldField\NegatCondFieldMoreSortingAscCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldField\NegatCondFieldNotEqAsNumCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldField\NegatCondFieldNotEqStringOnlyCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldField\NegatCondFieldNotLessSpecialFieldsCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldField\NegatCondFieldNotMoreStringOnlyCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldUnary\NegatCondNotNullValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldUnary\NegatCondNullValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldValueCond\NegatCondEqNullValueCase;
@@ -412,6 +417,12 @@ class RecordSearchCasesFacade
             new NegatCondFieldLessSortingDescCase(),
             new NegatCondFieldMoreAsNumCase(),
             new NegatCondFieldMoreSortingAscCase(),
+            new NegatCondFieldMoreOrEqAsStrCase(),
+            new NegatCondFieldNotEqAsNumCase(),
+            new NegatCondFieldNotEqStringOnlyCase(),
+            new NegatCondFieldNotLessSpecialFieldsCase(),
+            new NegatCondFieldNotMoreStringOnlyCase(),
+
         ];
     }
 }
