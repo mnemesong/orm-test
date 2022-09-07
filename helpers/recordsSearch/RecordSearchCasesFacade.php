@@ -3,6 +3,11 @@
 namespace Mnemesong\OrmTestHelpers\recordsSearch;
 
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\in\GetCondInWithEmptyValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\in\GetCondInWithNullValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\in\GetCondInWithNumValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\in\GetCondInWithStrValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\in\GetCondInWithStrValueSortedAndLimitedCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqAsNumValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqNullValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqValueCase;
@@ -311,6 +316,14 @@ class RecordSearchCasesFacade
             new GetCondNotMoreSortingDescCase(),
             new GetCondNotMoreSpecialFieldsCase(),
             new GetCondNotMoreStringOnlyCase(),
+
+            //===field-with-array===
+            //fieldArrayIn
+            new GetCondInWithEmptyValueCase(),
+            new GetCondInWithNullValueCase(),
+            new GetCondInWithNumValueCase(),
+            new GetCondInWithStrValueCase(),
+            new GetCondInWithStrValueSortedAndLimitedCase(),
         ];
     }
 }
