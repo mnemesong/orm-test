@@ -92,6 +92,13 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\lessOrEq\GetCondLessOrEqSortingDescCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\lessOrEq\GetCondLessOrEqSpecialFieldsCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\lessOrEq\GetCondLessOrEqStringOnlyCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\more\GetCondMoreAsNumCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\more\GetCondMoreAsStrCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\more\GetCondMoreLimitCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\more\GetCondMoreSortingAscCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\more\GetCondMoreSortingDescCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\more\GetCondMoreSpecialFieldsCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldWithFieldCond\more\GetCondMoreStringOnlyCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllLimitedCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\withoutCond\GetAllMultifieldSortedCase1;
@@ -231,6 +238,15 @@ class RecordSearchCasesFacade
             new GetCondLessOrEqSortingDescCase(),
             new GetCondLessOrEqSpecialFieldsCase(),
             new GetCondLessOrEqStringOnlyCase(),
+
+            //fieldFieldMore
+            new GetCondMoreAsNumCase(),
+            new GetCondMoreAsStrCase(),
+            new GetCondMoreLimitCase(),
+            new GetCondMoreSortingAscCase(),
+            new GetCondMoreSortingDescCase(),
+            new GetCondMoreSpecialFieldsCase(),
+            new GetCondMoreStringOnlyCase(),
         ];
     }
 }
