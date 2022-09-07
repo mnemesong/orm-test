@@ -8,6 +8,11 @@ use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\in\
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\in\GetCondInWithNumValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\in\GetCondInWithStrValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\in\GetCondInWithStrValueSortedAndLimitedCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\notIn\GetCondNotInWithEmptyValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\notIn\GetCondNotInWithNullValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\notIn\GetCondNotInWithNumValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\notIn\GetCondNotInWithStrValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldArrayCond\notIn\GetCondNotInWithStrValueSortedAndLimitedCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqAsNumValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqNullValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\fieldValueCond\eq\GetCondEqValueCase;
@@ -324,6 +329,13 @@ class RecordSearchCasesFacade
             new GetCondInWithNumValueCase(),
             new GetCondInWithStrValueCase(),
             new GetCondInWithStrValueSortedAndLimitedCase(),
+
+            //fieldArrayIn
+            new GetCondNotInWithEmptyValueCase(),
+            new GetCondNotInWithNullValueCase(),
+            new GetCondNotInWithNumValueCase(),
+            new GetCondNotInWithStrValueCase(),
+            new GetCondNotInWithStrValueSortedAndLimitedCase(),
         ];
     }
 }
