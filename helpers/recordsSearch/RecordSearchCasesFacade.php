@@ -3,6 +3,10 @@
 namespace Mnemesong\OrmTestHelpers\recordsSearch;
 
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeMulti\AndCondFieldEqStringOnlyCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeMulti\AndCondInWithStrValueCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeMulti\OrCondFieldEqStringOnlyCase;
+use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeMulti\OrCondInWithStrValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldArray\NegatCondInWithNullValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldArray\NegatCondInWithStrValueCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\searchInUuidTables\compositeUnary\not\fieldArray\NegatCondNotInWithNullValueCase;
@@ -423,6 +427,11 @@ class RecordSearchCasesFacade
             new NegatCondFieldNotLessSpecialFieldsCase(),
             new NegatCondFieldNotMoreStringOnlyCase(),
 
+            //==multiple-composition===
+            new AndCondFieldEqStringOnlyCase(),
+            new AndCondInWithStrValueCase(),
+            new OrCondFieldEqStringOnlyCase(),
+            new OrCondInWithStrValueCase(),
         ];
     }
 }
