@@ -15,16 +15,26 @@ class TestRecordsSearchTraitTest extends TestCase
 {
     use RecordsSearchTestCaseCheckerTrait;
 
+    /**
+     * @return RecordsSearchTestCase[]
+     */
     protected function getRecordSearchTestCases(): array
     {
         return RecordSearchCasesFacade::getAllCases();
     }
 
+    /**
+     * @return TestCase
+     */
     protected function getPhpunitTestcase(): TestCase
     {
         return $this;
     }
 
+    /**
+     * @param Structure[] $structures
+     * @return RecordsSearchModelInterface
+     */
     protected function getInitedByStructuresSearchModel(array $structures): RecordsSearchModelInterface
     {
         return new SearchModelStub(new StructureCollection($structures));
