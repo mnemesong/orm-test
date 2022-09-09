@@ -11,7 +11,7 @@ use Mnemesong\Structure\collections\StructureCollection;
 use Mnemesong\Structure\Structure;
 use PHPUnit\Framework\TestCase;
 
-class TestRecordsSearchTraitTest extends TestCase
+class TestRecordsSearch extends TestCase
 {
     use RecordsSearchTestCaseCheckerTrait;
 
