@@ -59,6 +59,18 @@ class ScalarSpeciticationPolitic implements ScalarCalcPoliticInterface
             } else {
                 return $this->calcSum($structs, $field);
             }
+        } elseif ($typeStr === 'long') {
+            if(!isset($field)) {
+                return null;
+            } else {
+                return $this->calcLong($structs, $field);
+            }
+        } elseif ($typeStr === 'short') {
+            if(!isset($field)) {
+                return null;
+            } else {
+                return $this->calcShort($structs, $field);
+            }
         } else {
             throw new \RuntimeException('Unknown scalar operator type: ' . $typeStr);
         }
@@ -163,5 +175,53 @@ class ScalarSpeciticationPolitic implements ScalarCalcPoliticInterface
             $sum += $val;
         }
         return $sum;
+    }
+
+    /**
+     * @param StructureCollection $structs
+     * @param string $field
+     * @return float|null
+     */
+    protected function calcLong(StructureCollection $structs, string $field): ?float
+    {
+        $relativeValues = $structs
+            ->filteredBy(fn(Structure $s) => (!is_null($s->get($field))))
+            ->map(fn(Structure $s) => ($s->get($field)));
+        if(count($relativeValues) === 0) {
+            return null;
+        }
+        $long = strlen(current($relativeValues));
+        foreach ($relativeValues as $val)
+        {
+            $currentStrlen = strlen($val);
+            if($currentStrlen > $long) {
+                $long = $currentStrlen;
+            }
+        }
+        return $long;
+    }
+
+    /**
+     * @param StructureCollection $structs
+     * @param string $field
+     * @return float|null
+     */
+    protected function calcShort(StructureCollection $structs, string $field): ?float
+    {
+        $relativeValues = $structs
+            ->filteredBy(fn(Structure $s) => (!is_null($s->get($field))))
+            ->map(fn(Structure $s) => ($s->get($field)));
+        if(count($relativeValues) === 0) {
+            return null;
+        }
+        $short = strlen(current($relativeValues));
+        foreach ($relativeValues as $val)
+        {
+            $currentStrlen = strlen($val);
+            if($currentStrlen < $short) {
+                $short = $currentStrlen;
+            }
+        }
+        return $short;
     }
 }

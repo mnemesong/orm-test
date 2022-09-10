@@ -6,7 +6,7 @@ use Mnemesong\OrmTestHelpers\scalarSearch\abstracts\ScalarSearchTestCase;
 use Mnemesong\Scalarex\specification\ScalarSpecification;
 use Mnemesong\Structure\Structure;
 
-class ScalarFieldValueNanAsNum extends ScalarSearchTestCase
+class ScalarFieldValueNanAsStr extends ScalarSearchTestCase
 {
     /**
      * @return void
@@ -14,19 +14,19 @@ class ScalarFieldValueNanAsNum extends ScalarSearchTestCase
     public function __construct()
     {
         $this->scalars = [
-            'avgCount' => new ScalarSpecification('avg', 'count'),
+            'avgCount' => new ScalarSpecification('avg', 'date'),
             'avgNull' => new ScalarSpecification('avg', null),
-            'countCount' => new ScalarSpecification('count', 'count'),
+            'countCount' => new ScalarSpecification('count', 'date'),
             'countNull' => new ScalarSpecification('count', null),
-            'maxCount' => new ScalarSpecification('max', 'count'),
+            'maxCount' => new ScalarSpecification('max', 'date'),
             'maxNull' => new ScalarSpecification('max', null),
-            'minCount' => new ScalarSpecification('min', 'count'),
+            'minCount' => new ScalarSpecification('min', 'date'),
             'minNull' => new ScalarSpecification('min', null),
-            'sumCount' => new ScalarSpecification('sum', 'count'),
+            'sumCount' => new ScalarSpecification('sum', 'date'),
             'sumNull' => new ScalarSpecification('sum', null),
-            'longCount' => new ScalarSpecification('long', 'count'),
+            'longCount' => new ScalarSpecification('long', 'date'),
             'longNull' => new ScalarSpecification('long', null),
-            'shortCount' => new ScalarSpecification('short', 'count'),
+            'shortCount' => new ScalarSpecification('short', 'date'),
             'shortNull' => new ScalarSpecification('short', null),
         ];
     }
@@ -50,19 +50,19 @@ class ScalarFieldValueNanAsNum extends ScalarSearchTestCase
     public function getResultStructure(): Structure
     {
         return  new Structure([
-            'avgCount' => 556 / 3,
+            'avgCount' => null,
             'avgNull' => null,
             'countCount' => 3,
             'countNull' => 4,
-            'maxCount' => 412,
+            'maxCount' => null,
             'maxNull' => null,
-            'minCount' => 21,
+            'minCount' => null,
             'minNull' => null,
-            'sumCount' => 556,
+            'sumCount' => null,
             'sumNull' => null,
-            'longCount' => 3,
+            'longCount' => 10,
             'longNull' => null,
-            'shortCount' => 2,
+            'shortCount' => 10,
             'shortNull' => null,
         ]);
     }
