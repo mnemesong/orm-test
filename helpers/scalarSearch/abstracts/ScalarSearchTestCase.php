@@ -9,8 +9,8 @@ use Mnemesong\Structure\Structure;
 abstract class ScalarSearchTestCase
 {
     /* @var ScalarSpecification[] $scalars */
-    protected array $scalars;
-    protected ?CondInterface $spec;
+    protected array $scalars = [];
+    protected ?CondInterface $spec = null;
 
     /**
      * @return Structure[]

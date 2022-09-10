@@ -4,6 +4,7 @@ namespace Mnemesong\OrmTest\collectionManager;
 
 use Mnemesong\Fit\conditions\abstracts\CondInterface;
 use Mnemesong\OrmCore\query\RecordsQuery;
+use Mnemesong\OrmTest\checker\scalarCalcPolitics\ScalarSpeciticationPolitic;
 use Mnemesong\OrmTest\checker\StructuresCheckerTool;
 use Mnemesong\OrmTest\collectionManager\helpers\CondFilterHelper;
 use Mnemesong\OrmTest\collectionManager\helpers\LimitsHelper;
@@ -67,7 +68,11 @@ class CollectionManagerTool
         StructureCollection $structs,
         array $scalars
     ): Structure {
-
+        $result = [];
+        foreach ($scalars as $key => $spec) {
+            $result[$key] = (new ScalarSpeciticationPolitic())->calculate($structs, $spec);
+        }
+        return new Structure($result);
     }
 
 }

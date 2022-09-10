@@ -8,6 +8,8 @@ use Mnemesong\OrmTest\collectionManager\CollectionManagerTool;
 use Mnemesong\OrmTest\DefaultConfiguredCheckedFacade;
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\RecordSearchCasesFacade;
+use Mnemesong\OrmTestHelpers\scalarSearch\abstracts\ScalarSearchTestCase;
+use Mnemesong\OrmTestHelpers\scalarSearch\ScalarSearchCasesFacade;
 use Mnemesong\Structure\collections\StructureCollection;
 use PHPUnit\Framework\TestCase;
 use Webmozart\Assert\Assert;
@@ -17,7 +19,6 @@ class CollectionManagerToolTest extends TestCase
     /**
      * @param array<RecordsSearchTestCase> $testCases
      * @return void
-     * @throws \ErrorException
      */
     protected function pureSearchTest(array $testCases): void
     {
@@ -43,12 +44,47 @@ class CollectionManagerToolTest extends TestCase
     }
 
     /**
+     * @param ScalarSearchTestCase[] $testCases
      * @return void
-     * @throws \ErrorException
      */
-    public function testAllCases(): void
+    protected function pureScalarTest(array $testCases): void
+    {
+        $colManager = new CollectionManagerTool(DefaultConfiguredCheckedFacade::getDefaultConfiguredChecked());
+        Assert::allIsAOf($testCases, ScalarSearchTestCase::class);
+        foreach ($testCases as $case)
+        {
+            try {
+                $filtered = $colManager->searchInCollection(
+                    new StructureCollection($case->getInitStructures()),
+                    [],
+                    [],
+                    $case->getSpec(),
+                    0
+                );
+                $result = $colManager->calculateScalars($filtered, $case->getScalars());
+            } catch (\Exception $exception) {
+                throw new \RuntimeException('Error while testing ' . get_class($case)
+                    . ' : ' . $exception->__toString());
+            }
+            $this->assertEquals($case->getResultStructure(), $result, 'Failed of testcase'
+                . get_class($case));
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function testAllSearchCases(): void
     {
         $this->pureSearchTest(RecordSearchCasesFacade::getAllCases());
+    }
+
+    /**
+     * @return void
+     */
+    public function testAllScalarCases(): void
+    {
+        $this->pureScalarTest(ScalarSearchCasesFacade::getAllCases());
     }
 
     /**

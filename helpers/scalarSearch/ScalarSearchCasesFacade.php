@@ -3,6 +3,7 @@
 namespace Mnemesong\OrmTestHelpers\scalarSearch;
 
 use Mnemesong\OrmTestHelpers\scalarSearch\abstracts\ScalarSearchTestCase;
+use Mnemesong\OrmTestHelpers\scalarSearch\searchInUuidTables\withoutCond\ScalarFieldValueNanAsNum;
 
 class ScalarSearchCasesFacade
 {
@@ -12,7 +13,7 @@ class ScalarSearchCasesFacade
     public static function getAllCases(): array
     {
         return [
-
+            new ScalarFieldValueNanAsNum(),
         ];
     }
 }
