@@ -33,12 +33,12 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "mnemesong/orm-core": "0.7.*",
+        "mnemesong/orm-core": "0.9.*",
         "php": ">=7.4",
         "webmozart/assert": "1.11.*",
         "mnemesong/fit": "0.1.*",
         "mnemesong/structure": "0.4.*",
-        "mnemesong/scalarex": "0.2.*",
+        "mnemesong/scalarex": "0.3.*",
         "mnemesong/table-schema": "0.5.*"
     },
     "config": {
