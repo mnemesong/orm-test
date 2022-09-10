@@ -4,6 +4,7 @@ namespace Mnemesong\OrmTestHelpers\scalarSearch;
 
 use Mnemesong\OrmTestHelpers\scalarSearch\abstracts\ScalarSearchTestCase;
 use Mnemesong\OrmTestHelpers\scalarSearch\searchInUuidTables\fieldValue\ScalarFieldValueEqAsNum;
+use Mnemesong\OrmTestHelpers\scalarSearch\searchInUuidTables\fieldValue\ScalarFieldValueLessOrEqStr;
 use Mnemesong\OrmTestHelpers\scalarSearch\searchInUuidTables\fieldValue\ScalarFieldValueMoreAsNum;
 use Mnemesong\OrmTestHelpers\scalarSearch\searchInUuidTables\withoutCond\ScalarFieldValueNanAsNum;
 use Mnemesong\OrmTestHelpers\scalarSearch\searchInUuidTables\withoutCond\ScalarFieldValueNanAsStr;
@@ -20,6 +21,7 @@ class ScalarSearchCasesFacade
             new ScalarFieldValueNanAsStr(),
             new ScalarFieldValueEqAsNum(),
             new ScalarFieldValueMoreAsNum(),
+            new ScalarFieldValueLessOrEqStr(),
         ];
     }
 }
