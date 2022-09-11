@@ -33,7 +33,7 @@ class ScalarModelStub implements ScalarsSearchModelInterface
     {
         $colManager = new CollectionManagerTool(DefaultConfiguredCheckedFacade::getDefaultConfiguredChecked());
         $structs = $colManager->searchInCollection($this->coll, [], [], $spec, 0);
-        return $colManager->calculateScalars($structs, $scalars);
+        return $colManager->scalarsInCollection($structs, $scalars);
     }
 
     /**

@@ -6,6 +6,8 @@ use Mnemesong\OrmTest\checker\structureMatchPolitics\FieldUnaryCondPolitic;
 use Mnemesong\OrmTest\checker\StructuresCheckerTool;
 use Mnemesong\OrmTest\collectionManager\CollectionManagerTool;
 use Mnemesong\OrmTest\DefaultConfiguredCheckedFacade;
+use Mnemesong\OrmTestHelpers\createCommand\abstracts\RecordsSaveTestCase;
+use Mnemesong\OrmTestHelpers\createCommand\RecordsSaveCasesFacade;
 use Mnemesong\OrmTestHelpers\recordsSearch\abstracts\RecordsSearchTestCase;
 use Mnemesong\OrmTestHelpers\recordsSearch\RecordSearchCasesFacade;
 use Mnemesong\OrmTestHelpers\scalarSearch\abstracts\ScalarSearchTestCase;
@@ -61,13 +63,38 @@ class CollectionManagerToolTest extends TestCase
                     $case->getSpec(),
                     0
                 );
-                $result = $colManager->calculateScalars($filtered, $case->getScalars());
+                $result = $colManager->scalarsInCollection($filtered, $case->getScalars());
             } catch (\Exception $exception) {
                 throw new \RuntimeException('Error while testing ' . get_class($case)
                     . ' : ' . $exception->__toString());
             }
             $this->assertEquals($case->getResultStructure(), $result, 'Failed of testcase'
                 . get_class($case));
+        }
+    }
+
+    /**
+     * @param RecordsSaveTestCase[] $testCases
+     * @return void
+     */
+    protected function pureSaveTest(array $testCases): void
+    {
+        $colManager = new CollectionManagerTool(DefaultConfiguredCheckedFacade::getDefaultConfiguredChecked());
+        Assert::allIsAOf($testCases, RecordsSaveTestCase::class);
+        foreach ($testCases as $case)
+        {
+            try {
+                $result = $colManager->addToCollection(
+                    new StructureCollection($case->getInitStructures()),
+                    $case->getSavingStructure(),
+                    $case->isSmartSave(),
+                    $case->getPrimaryFields()
+                );
+                $this->assertEquals($case->getResultStructures(), $result->getAll());
+            } catch (\Exception $exception) {
+                throw new \RuntimeException('Error while testing ' . get_class($case)
+                    . ' : ' . $exception->__toString());
+            }
         }
     }
 
@@ -85,6 +112,14 @@ class CollectionManagerToolTest extends TestCase
     public function testAllScalarCases(): void
     {
         $this->pureScalarTest(ScalarSearchCasesFacade::getAllCases());
+    }
+
+    /**
+     * @return void
+     */
+    public function testAllSaveCases(): void
+    {
+        $this->pureSaveTest(RecordsSaveCasesFacade::getAllCases());
     }
 
     /**

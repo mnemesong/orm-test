@@ -15,6 +15,7 @@ use Mnemesong\OrmTest\exceptions\UnknownSortTypeException;
 use Mnemesong\Scalarex\specification\ScalarSpecification;
 use Mnemesong\Structure\collections\StructureCollection;
 use Mnemesong\Structure\Structure;
+use Webmozart\Assert\Assert;
 
 class CollectionManagerTool
 {
@@ -64,7 +65,7 @@ class CollectionManagerTool
      * @param ScalarSpecification[] $scalars
      * @return Structure
      */
-    public function calculateScalars(
+    public function scalarsInCollection(
         StructureCollection $structs,
         array $scalars
     ): Structure {
@@ -73,6 +74,71 @@ class CollectionManagerTool
             $result[$key] = (new ScalarSpeciticationPolitic())->calculate($structs, $spec);
         }
         return new Structure($result);
+    }
+
+    /**
+     * @param StructureCollection $structs
+     * @param Structure $addinStructure
+     * @param bool $smartSave
+     * @param string[] $primaryFields
+     * @return StructureCollection
+     * @throws \ErrorException
+     */
+    public function addToCollection(
+        StructureCollection $structs,
+        Structure $addinStructure,
+        bool $smartSave,
+        array $primaryFields
+    ): StructureCollection {
+        $itBeenUpdated = false;
+        if(!empty($primaryFields)) {
+            $this->assertStructureHasPks($addinStructure, $primaryFields);
+            $pkAddStructure = $addinStructure->getOnly($primaryFields);
+            $structs = $this
+                ->updateIfPksEquals($structs, $pkAddStructure, $itBeenUpdated, $addinStructure, $smartSave);
+        }
+        if($itBeenUpdated === false) {
+            $structs = $structs->withNewOneItem($addinStructure);
+        }
+        return $structs;
+    }
+
+    /**
+     * @throws \ErrorException
+     */
+    protected function updateIfPksEquals(
+        StructureCollection $structs,
+        Structure $pkAddStructure,
+        bool &$itBeenUpdated,
+        Structure $addInStructure,
+        bool $isSmartSave
+    ): StructureCollection
+    {
+        return $structs
+            ->reworkedBy(function(Structure $s) use ($pkAddStructure, &$itBeenUpdated, $addInStructure, $isSmartSave) {
+                if($pkAddStructure->isIncludedStrictlyIn($s)) {
+                    Assert::false($isSmartSave, 'Cant insert structure, case records with same pk exists yet');
+                    $itBeenUpdated = true;
+                    foreach ($addInStructure->toArray() as $key => $val)
+                    {
+                        $s = $s->with($key, $val);
+                    }
+                }
+            });
+    }
+
+    /**
+     * @param Structure $struct
+     * @param string[] $pks
+     * @return void
+     */
+    protected function assertStructureHasPks(Structure $struct, array $pks): void
+    {
+        foreach ($pks as $pk)
+        {
+            Assert::true($struct->has($pk), "Structure "
+                . json_encode($struct->toArray(), JSON_UNESCAPED_UNICODE) . " has not primary field " . $pk);
+        }
     }
 
 }
