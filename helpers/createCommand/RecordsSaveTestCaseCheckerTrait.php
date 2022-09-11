@@ -33,23 +33,30 @@ trait RecordsSaveTestCaseCheckerTrait
 
     /**
      * @param Structure[] $structures
+     * @param array $pks
      * @return RecordsSaveModelInterface
      */
-    abstract protected function getInitedByStructuresSaveModel(array $structures): RecordsSaveModelInterface;
+    abstract protected function getInitedByStructuresSaveModel(array $structures, array $pks): RecordsSaveModelInterface;
 
+    /**
+     * @return void
+     */
     public function testAll(): void
     {
         foreach ($this->getRecordSaveTestCases() as $testCase)
         {
             try {
-                $saveModel =  $this->getInitedByStructuresSaveModel($testCase->getInitStructures());
+                $saveModel = $this->getInitedByStructuresSaveModel(
+                    $testCase->getInitStructures(),
+                    $testCase->getPrimaryFields()
+                );
                 $saveModel
                     ->createRecord(
                         $testCase->getSavingStructure(),
                         $testCase->isSmartSave()
                     );
                 $result = $this->essenceCurrentStorageContains($saveModel);
-                $this->getPhpunitTestcase()->assertEquals($result, $testCase->getResultStructures());
+                $this->getPhpunitTestcase()->assertEquals($result->getAll(), $testCase->getResultStructures());
             } catch (\Exception $exception) {
                 throw new \RuntimeException('Error while testing ' . get_class($testCase)
                     . ' : ' . $exception->__toString());
