@@ -34,6 +34,7 @@ class InsertUniqRecordToUuidTable extends RecordsSaveTestCase
 
     public function __construct()
     {
+        $this->primaryFields = ['uuid'];
     }
 
     /**

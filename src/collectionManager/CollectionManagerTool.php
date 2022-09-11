@@ -124,6 +124,7 @@ class CollectionManagerTool
                         $s = $s->with($key, $val);
                     }
                 }
+                return $s;
             });
     }
 
